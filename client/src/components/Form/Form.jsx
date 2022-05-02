@@ -6,7 +6,6 @@ import {
   Headline,
   InputField,
   FormWrapper,
-  ShowPassword,
   Heading,
   CloseModal,
 } from "./Form.styles";

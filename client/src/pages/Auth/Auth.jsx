@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Input from "../../components/Input";
+import Input from "../../components/Input/Input";
 import {
   Wrapper,
   Form,
@@ -73,13 +73,13 @@ const Auth = () => {
           type={"email"}
           label={"Email Address"}
           name={"email"}
-          placeholder={"Please enter your Email address"}
+          placeholder="Please enter your Email address"
         />
         <Input
           handleChange={handleChange}
           type={"password"}
           label={"Master Password"}
-          placeholder={"Please enter the master password"}
+          placeholder="Please enter the master password"
           name={"password"}
         />
         {isSignup ? (
@@ -87,7 +87,7 @@ const Auth = () => {
             handleChange={handleChange}
             type={"password"}
             label={"Re-type Master Password"}
-            placeholder={"Please re-type the master password"}
+            placeholder="Please re-type the master password"
             name={"confirmPassword"}
           />
         ) : null}

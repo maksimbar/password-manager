@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Colors from "../../helpers/Colors";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ export const Container = styled.div`
 
 export const Span = styled.span`
   font-size: 0.9em;
-  color: #0c77b1;
+  color: ${Colors.default};
 `;
 
 export const Desclaimer = styled.span`
@@ -44,20 +45,5 @@ export const Img = styled.img`
   max-width: 400px;
   @media (max-width: 800px) {
     display: none;
-  }
-`;
-
-export const StyledButton = styled.button`
-  cursor: pointer;
-  width: 200px;
-  height: 50px;
-  background-color: #2761e0;
-  color: white;
-  font-size: 1.3em;
-  border: none;
-  border-radius: 8px;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    opacity: 0.9;
   }
 `;

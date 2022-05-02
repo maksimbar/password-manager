@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import Colors from "../../helpers/Colors";
 
 export const StyledLink = styled(NavLink)`
   color: black;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   &.active {
-    color: #2761e0;
+    color: ${Colors.default};
   }
   &:hover {
-    color: #2761e0;
+    color: ${Colors.default};
   }
 `;
 
@@ -28,7 +29,6 @@ export const Li = styled.li`
 `;
 
 export const UserDetails = styled.div`
-  /* width: fit-content; */
   margin-right: auto;
   display: flex;
   gap: 20px;
@@ -58,7 +58,7 @@ export const Button = styled.button`
   cursor: pointer;
   width: 100px;
   height: 30px;
-  background-color: #2761e0;
+  background-color: ${Colors.default};
   color: white;
   font-size: 1em;
   border: none;

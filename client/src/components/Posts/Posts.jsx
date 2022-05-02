@@ -11,11 +11,9 @@ const Posts = ({ setCurrentId }) => {
       {posts.map(
         (post) =>
           user?.result?._id === post?.creator && (
-            <>
-              <PasswordContainer>
-                <Post key={post._id} setCurrentId={setCurrentId} post={post} />
-              </PasswordContainer>
-            </>
+            <PasswordContainer key={post._id}>
+              <Post setCurrentId={setCurrentId} post={post} />
+            </PasswordContainer>
           )
       )}
     </Container>

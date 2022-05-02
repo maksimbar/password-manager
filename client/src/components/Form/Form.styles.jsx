@@ -44,16 +44,6 @@ export const InputField = styled.div`
   gap: 5px;
 `;
 
-export const ShowPassword = styled.i`
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  z-index: 200;
-  top: 34px;
-  right: 5px;
-  cursor: pointer;
-`;
-
 export const Heading = styled.div`
   display: flex;
   justify-content: space-between;

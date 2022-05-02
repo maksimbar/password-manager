@@ -15,7 +15,7 @@ import {
   EntropyContainer,
   SliderContainer,
 } from "./Generator.styles";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Slider, InputNumber } from "antd";
 import calculateEntropy from "../../helpers/Entropy";
 
@@ -69,6 +69,7 @@ const Generator = () => {
                 length: value,
               }));
             }}
+            value={input.length}
             min={8}
             max={128}
             style={{ maxWidth: "600px", width: "95%" }}
@@ -88,7 +89,7 @@ const Generator = () => {
         </SliderContainer>
         <Settings>
           <SettingsGroup>
-            <Label for="uppercase">A-Z</Label>
+            <Label htmlFor="uppercase">A-Z</Label>
             <Checkbox
               type="checkbox"
               name="uppercase"
@@ -98,7 +99,7 @@ const Generator = () => {
             />
           </SettingsGroup>
           <SettingsGroup>
-            <Label for="numbers">0-9</Label>
+            <Label htmlFor="numbers">0-9</Label>
             <Checkbox
               type="checkbox"
               name="numbers"
@@ -108,7 +109,7 @@ const Generator = () => {
             />
           </SettingsGroup>
           <SettingsGroup>
-            <Label for="symbols">!@#$%^&*</Label>
+            <Label htmlFor="symbols">!@#$%^&*</Label>
             <Checkbox
               type="checkbox"
               name="symbols"

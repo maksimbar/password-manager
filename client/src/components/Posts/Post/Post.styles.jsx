@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Colors from "../../../helpers/Colors";
 
 export const PasswordContainer = styled.div`
   display: flex;
@@ -17,12 +18,11 @@ export const IconContainer = styled.div`
   gap: 15px;
   position: absolute;
   right: 50px;
-  /* margin-left: auto; */
 `;
 
 export const Icon = styled.i`
   cursor: pointer;
-  color: #2761e0;
+  color: ${Colors.default};
   transition: opacity 0.3s ease-in-out;
   &:hover {
     opacity: 0.8;
@@ -30,11 +30,11 @@ export const Icon = styled.i`
 `;
 
 export const EmailContainer = styled.div`
-  color: grey;
+  color: ${Colors.secondary};
   font-size: 0.8em;
 `;
 
-export const SiteUrl = styled.div`
-  color: #0060a6;
+export const PlatformName = styled.div`
+  color: ${Colors.default};
   font-size: 1em;
 `;

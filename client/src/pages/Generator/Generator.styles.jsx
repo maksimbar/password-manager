@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Colors from "../../helpers/Colors";
 
 export const Wrapper = styled.div`
   max-width: 1000px;
@@ -34,7 +35,7 @@ export const PasswordContainer = styled.div`
   min-height: 90px;
   height: fit-content;
   color: #0c77b1;
-  background-color: #fbfcfe;
+  background-color: ${Colors.primary};
   border-radius: 15px;
   border: 1px solid #dadce0;
 `;
@@ -66,7 +67,7 @@ export const Button = styled.button`
   justify-content: center;
   transition: background-color 0.3s ease-in-out;
   &:hover {
-    background-color: #f9fafb;
+    background-color: #f6f7f9;
   }
 `;
 

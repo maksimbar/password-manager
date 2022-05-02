@@ -11,15 +11,14 @@ import {
   CloseModal,
 } from "./Form.styles";
 import Button from "../../components/Button/Button";
-import Input from "../Input";
+import Input from "../Input/Input";
 import Modal from "react-modal";
 import { Icon } from "../Posts/Post/Post.styles";
 
 Modal.setAppElement("#root");
 
 const Form = ({ currentId, setCurrentId, component }) => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [passwordShown, setPasswordShown] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -38,8 +37,6 @@ const Form = ({ currentId, setCurrentId, component }) => {
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
   );
-
-  const togglePassword = () => setPasswordShown(!passwordShown);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -100,7 +97,7 @@ const Form = ({ currentId, setCurrentId, component }) => {
               length={"20"}
               label={"Platform"}
               name={"platform"}
-              placeholder={"Enter name of a platform (e.g. Netflix)"}
+              placeholder="Enter name of a platform (e.g. Netflix)"
               type="text"
               value={postData.url}
               handleChange={(e) =>
@@ -113,7 +110,7 @@ const Form = ({ currentId, setCurrentId, component }) => {
               length={"30"}
               label={"Username"}
               name={"username"}
-              placeholder={"Enter username/e-mail used during registration"}
+              placeholder="Enter username/e-mail used during registration"
               type="text"
               value={postData.username}
               handleChange={(e) =>
@@ -123,20 +120,14 @@ const Form = ({ currentId, setCurrentId, component }) => {
           </InputField>
           <InputField>
             <Input
+              type={"password"}
               label={"Password"}
               name={"password"}
-              type={passwordShown ? "text" : "password"}
-              placeholder={"Password goes here"}
+              placeholder="Password goes here"
               value={postData.password}
               handleChange={(e) =>
                 setPostData({ ...postData, password: e.target.value })
               }
-            />
-            <ShowPassword
-              className={
-                passwordShown ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"
-              }
-              onClick={togglePassword}
             />
           </InputField>
           <Button content={currentId ? "Edit item" : "Add item"} />

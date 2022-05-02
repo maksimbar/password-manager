@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import Colors from "../../helpers/Colors";
 
 export const StyledButton = styled.button`
   cursor: pointer;
   width: 100%;
   height: 50px;
-  background-color: #2761e0;
+  background-color: ${Colors.default};
   color: white;
   font-size: 1.3em;
   border: none;

@@ -1,9 +1,10 @@
 import { createGlobalStyle } from "styled-components";
+import Colors from "./helpers/Colors";
 
 const GlobalStyle = createGlobalStyle`
 body {
   margin:auto;
-  background-color: #fbfcfe;
+  background-color: ${Colors.primary};;
   font-family: sans-serif;
   color:#141c3a;
   display: flex;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Colors from "../../helpers/Colors";
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -41,7 +42,7 @@ export const Span = styled.span`
 export const Activator = styled.span`
   cursor: pointer;
   font-size: 14px;
-  color: #0c77b1;
+  color: ${Colors.default};
   transition: all 0.3s ease-in-out;
   &:hover {
     opacity: 0.8;

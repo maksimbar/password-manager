@@ -4,7 +4,7 @@ import {
   PreviewData,
   IconContainer,
   EmailContainer,
-  SiteUrl,
+  PlatformName,
   Icon,
 } from "./Post.styles";
 import { useDispatch } from "react-redux";
@@ -18,7 +18,7 @@ const Post = ({ post, setCurrentId }) => {
     <>
       <PasswordContainer>
         <PreviewData>
-          <SiteUrl>{post.url}</SiteUrl>
+          <PlatformName>{post.url}</PlatformName>
           <EmailContainer>{post.username}</EmailContainer>
         </PreviewData>
         <IconContainer>

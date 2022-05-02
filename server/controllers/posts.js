@@ -26,9 +26,9 @@ export const getPost = async (req, res) => {
 
 
 export const createPost = async (req, res) => {
-    const { url, username, password } = req.body;
+    const post = req.body;
 
-    const newPostMessage = new PostMessage({ url, username, password })
+    const newPostMessage = new PostMessage({ ...post, creator: req.userId})
 
     try {
         await newPostMessage.save();
@@ -41,11 +41,11 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
     const { id } = req.params;
-    const { url, username, password } = req.body;
+    const {creator, url, username, password } = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updatedPost = { url, username, password, _id: id };
+    const updatedPost = {creator, url, username, password, _id: id };
 
     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
 

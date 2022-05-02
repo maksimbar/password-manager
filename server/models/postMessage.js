@@ -4,6 +4,7 @@ const postSchema = mongoose.Schema({
     url: String,
     username: String,
     password: String,
+    creator: String,
 })
 
 var PostMessage = mongoose.model('PostMessage', postSchema);

@@ -19,6 +19,6 @@ jobs:
       - run: cd server
       - run: npm i
       - run: cd ..
-      --run: cd client
+      - run: cd client
       - run: npm i
       - run: npm run build

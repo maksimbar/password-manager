@@ -1,0 +1,25 @@
+import React from "react";
+import { useSelector } from "react-redux";
+import Post from "./Post/Post";
+import { PasswordContainer, Container } from "./Posts.styles";
+
+const Posts = ({ setCurrentId }) => {
+  const posts = useSelector((state) => state.posts);
+  const user = JSON.parse(localStorage.getItem("profile"));
+  return (
+    <Container>
+      {posts.map(
+        (post) =>
+          user?.result?._id === post?.creator && (
+            <>
+              <PasswordContainer>
+                <Post key={post._id} setCurrentId={setCurrentId} post={post} />
+              </PasswordContainer>
+            </>
+          )
+      )}
+    </Container>
+  );
+};
+
+export default Posts;

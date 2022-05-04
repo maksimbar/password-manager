@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Input from "../../components/Input/Input";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Input from '../../components/Input/Input';
 import {
   Wrapper,
   Form,
@@ -9,14 +9,14 @@ import {
   Header,
   Span,
   ContainerFooter,
-  Activator,
-} from "./Auth.styles";
-import { GoogleLogin } from "react-google-login";
-import { useDispatch } from "react-redux";
-import { signin, signup } from "../../actions/auth";
-import Button from "../../components/Button/Button";
+  Activator
+} from './Auth.styles';
+import { GoogleLogin } from 'react-google-login';
+import { useDispatch } from 'react-redux';
+import { signin, signup } from '../../actions/auth';
+import Button from '../../components/Button/Button';
 
-const initialState = { email: "", password: "", confirmPassword: "" };
+const initialState = { email: '', password: '', confirmPassword: '' };
 
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -47,48 +47,46 @@ const Auth = () => {
     const token = res?.tokenId;
 
     try {
-      dispatch({ type: "AUTH", data: { result, token } });
+      dispatch({ type: 'AUTH', data: { result, token } });
 
-      navigate("/");
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
   };
 
-  const googleFailure = (error) => {
-    console.log("Google Sign In was unsuccessful. Try Again Later");
+  const googleFailure = () => {
+    console.log('Google Sign In was unsuccessful. Try Again Later');
   };
 
   return (
     <Wrapper>
       <Form onSubmit={handleSubmit}>
         <Header>
-          <Heading>
-            {isSignup ? "Create your account" : "Sign in into your account"}
-          </Heading>
+          <Heading>{isSignup ? 'Create your account' : 'Sign in into your account'}</Heading>
           <SubHeading>Get your password secured with us</SubHeading>
         </Header>
         <Input
           handleChange={handleChange}
-          type={"email"}
-          label={"Email Address"}
-          name={"email"}
+          type={'email'}
+          label={'Email Address'}
+          name={'email'}
           placeholder="Please enter your Email address"
         />
         <Input
           handleChange={handleChange}
-          type={"password"}
-          label={"Master Password"}
+          type={'password'}
+          label={'Master Password'}
           placeholder="Please enter the master password"
-          name={"password"}
+          name={'password'}
         />
         {isSignup ? (
           <Input
             handleChange={handleChange}
-            type={"password"}
-            label={"Re-type Master Password"}
+            type={'password'}
+            label={'Re-type Master Password'}
             placeholder="Please re-type the master password"
-            name={"confirmPassword"}
+            name={'confirmPassword'}
           />
         ) : null}
         <ContainerFooter>
@@ -98,13 +96,10 @@ const Auth = () => {
             onFailure={googleFailure}
             cookiePOlicy="single_host_origin"
           />
-          <Button
-            content={isSignup ? "Create Account" : "Sign In"}
-            size={"100%"}
-          />
+          <Button content={isSignup ? 'Create Account' : 'Sign In'} size={'100%'} />
           <Span onClick={switchMode}>
             {isSignup ? `Already have an account?` : "Don't have an account?"}
-            <Activator>{isSignup ? "Sign In" : "Sign Up"}</Activator>
+            <Activator>{isSignup ? 'Sign In' : 'Sign Up'}</Activator>
           </Span>
         </ContainerFooter>
       </Form>

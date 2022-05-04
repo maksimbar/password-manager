@@ -1,12 +1,12 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import GlobalStyle from "./globalStyles";
-import Vault from "./pages/Vault";
-import Generator from "./pages/Generator/Generator";
-import Auth from "./pages/Auth/Auth";
-import { Backdrop } from "./App.styles";
-import { ToastContainer } from "react-toastify";
-import { PrivateRoute } from "./PrivateRoute";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import GlobalStyle from './globalStyles';
+import Vault from './pages/Vault';
+import Generator from './pages/Generator/Generator';
+import Auth from './pages/Auth/Auth';
+import { Backdrop } from './App.styles';
+import { ToastContainer } from 'react-toastify';
+import { PrivateRoute } from './PrivateRoute';
 
 const App = () => {
   return (

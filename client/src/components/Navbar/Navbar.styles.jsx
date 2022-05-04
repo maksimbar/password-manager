@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import Colors from "../../helpers/Colors";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import Colors from '../../helpers/Colors';
 
 export const StyledLink = styled(NavLink)`
   color: black;
@@ -49,22 +49,17 @@ export const Ul = styled.ul`
 `;
 
 export const Span = styled.span`
+  font-size: 0.9em;
   @media (max-width: 720px) {
     display: none;
   }
 `;
 
-export const Button = styled.button`
+export const Icon = styled.i`
   cursor: pointer;
-  width: 100px;
-  height: 30px;
-  background-color: ${Colors.default};
-  color: white;
-  font-size: 1em;
-  border: none;
-  border-radius: 8px;
-  transition: all 0.3s ease-in-out;
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in-out;
   &:hover {
-    opacity: 0.9;
+    opacity: 1;
   }
 `;

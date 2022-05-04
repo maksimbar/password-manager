@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { createPost, updatePost } from "../../actions/posts";
-import "./Modal.css";
-import {
-  Headline,
-  InputField,
-  FormWrapper,
-  Heading,
-  CloseModal,
-} from "./Form.styles";
-import Button from "../../components/Button/Button";
-import Input from "../Input/Input";
-import Modal from "react-modal";
-import { Icon } from "../Posts/Post/Post.styles";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createPost, updatePost } from '../../actions/posts';
+import './Modal.css';
+import { Headline, InputField, FormWrapper, Heading, CloseModal } from './Form.styles';
+import Button from '../../components/Button/Button';
+import Input from '../Input/Input';
+import Modal from 'react-modal';
+import { Icon } from '../Posts/Post/Post.styles';
 
-Modal.setAppElement("#root");
+Modal.setAppElement('#root');
 
 const Form = ({ currentId, setCurrentId, component }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -28,9 +22,9 @@ const Form = ({ currentId, setCurrentId, component }) => {
   }
 
   const [postData, setPostData] = useState({
-    url: "",
-    username: "",
-    password: "",
+    platform: '',
+    username: '',
+    password: ''
   });
 
   const post = useSelector((state) =>
@@ -44,7 +38,7 @@ const Form = ({ currentId, setCurrentId, component }) => {
 
   const clear = () => {
     setCurrentId(null);
-    setPostData({ url: "", username: "", password: "" });
+    setPostData({ platform: '', username: '', password: '' });
   };
 
   const handleSubmit = async (e) => {
@@ -61,75 +55,65 @@ const Form = ({ currentId, setCurrentId, component }) => {
 
   return (
     <>
-      {component === "edit" ? (
+      {component === 'edit' ? (
         <Icon className="fa-solid fa-id-card fa-xl" onClick={openModal} />
       ) : (
-        <Button size={"200px"} content={"Add Item"} onClick={openModal} />
+        <Button size={'200px'} content={'Add Item'} onClick={openModal} />
       )}
 
       <Modal
         className={{
-          base: "modal-base",
-          afterOpen: "modal-base_after-open",
-          beforeClose: "modal-base_before-close",
+          base: 'modal-base',
+          afterOpen: 'modal-base_after-open',
+          beforeClose: 'modal-base_before-close'
         }}
         overlayClassName={{
-          base: "overlay-base",
-          afterOpen: "overlay-base_after-open",
-          beforeClose: "overlay-base_before-close",
+          base: 'overlay-base',
+          afterOpen: 'overlay-base_after-open',
+          beforeClose: 'overlay-base_before-close'
         }}
         closeTimeoutMS={200}
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        contentLabel="Example Modal"
-      >
+        contentLabel="Example Modal">
         <FormWrapper onSubmit={handleSubmit}>
           <Heading>
-            <Headline>{currentId ? "Edit item" : "Add item"}</Headline>
-            <CloseModal
-              onClick={closeModal}
-              className="fa-solid fa-xmark fa-xl"
-            />
+            <Headline>{currentId ? 'Edit item' : 'Add item'}</Headline>
+            <CloseModal onClick={closeModal} className="fa-solid fa-xmark fa-xl" />
           </Heading>
           <InputField>
             <Input
-              length={"20"}
-              label={"Platform"}
-              name={"platform"}
+              length={'20'}
+              label={'Platform'}
+              name={'platform'}
               placeholder="Enter name of a platform (e.g. Netflix)"
               type="text"
-              value={postData.url}
-              handleChange={(e) =>
-                setPostData({ ...postData, url: e.target.value })
-              }
+              value={postData.platform}
+              handleChange={(e) => setPostData({ ...postData, platform: e.target.value })}
             />
           </InputField>
           <InputField>
             <Input
-              length={"30"}
-              label={"Username"}
-              name={"username"}
+              length={'30'}
+              label={'Username'}
+              name={'username'}
               placeholder="Enter username/e-mail used during registration"
               type="text"
               value={postData.username}
-              handleChange={(e) =>
-                setPostData({ ...postData, username: e.target.value })
-              }
+              handleChange={(e) => setPostData({ ...postData, username: e.target.value })}
             />
           </InputField>
           <InputField>
             <Input
-              type={"password"}
-              label={"Password"}
-              name={"password"}
+              type={'password'}
+              label={'Password'}
+              name={'password'}
               placeholder="Password goes here"
               value={postData.password}
-              handleChange={(e) =>
-                setPostData({ ...postData, password: e.target.value })
-              }
+              handleChange={(e) => setPostData({ ...postData, password: e.target.value })}
             />
           </InputField>
-          <Button content={currentId ? "Edit item" : "Add item"} />
+          <Button content={currentId ? 'Edit item' : 'Add item'} />
         </FormWrapper>
       </Modal>
     </>

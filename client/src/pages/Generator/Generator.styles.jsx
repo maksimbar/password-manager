@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Colors from "../../helpers/Colors";
+import styled from 'styled-components';
+import Colors from '../../helpers/Colors';
 
 export const Wrapper = styled.div`
   max-width: 1000px;
@@ -93,7 +93,7 @@ export const Label = styled.label``;
 export const Checkbox = styled.input``;
 
 export const EntropyContainer = styled.div`
-  color: black;
+  color: ${Colors.secondary};
   font-size: 0.9em;
   display: flex;
   flex-wrap: wrap;

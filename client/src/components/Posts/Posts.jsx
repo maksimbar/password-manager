@@ -10,7 +10,7 @@ const Posts = ({ setCurrentId }) => {
     <Container>
       {posts.map(
         (post) =>
-          user?.result?._id === post?.creator && (
+          (user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
             <PasswordContainer key={post._id}>
               <Post setCurrentId={setCurrentId} post={post} />
             </PasswordContainer>

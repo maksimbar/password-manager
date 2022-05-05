@@ -9,12 +9,15 @@ import {
   Header,
   Span,
   ContainerFooter,
-  Activator
+  Activator,
+  GoogleButton,
+  GoogleImg
 } from './Auth.styles';
 import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { signin, signup } from '../../actions/auth';
 import Button from '../../components/Button/Button';
+import googleLogo from '../../assets/img/google-logo.png';
 
 const initialState = { email: '', password: '', confirmPassword: '' };
 
@@ -45,7 +48,6 @@ const Auth = () => {
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
-
     try {
       dispatch({ type: 'AUTH', data: { result, token } });
 
@@ -91,10 +93,15 @@ const Auth = () => {
         ) : null}
         <ContainerFooter>
           <GoogleLogin
-            clientId="672712059522-dbsu3ks41npu2sn696eeeil895jckdh4.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <GoogleButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                <GoogleImg src={googleLogo} /> Continue with Google
+              </GoogleButton>
+            )}
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             onSuccess={googleSuccess}
             onFailure={googleFailure}
-            cookiePOlicy="single_host_origin"
+            cookiePolicy="single_host_origin"
           />
           <Button content={isSignup ? 'Create Account' : 'Sign In'} size={'100%'} />
           <Span onClick={switchMode}>

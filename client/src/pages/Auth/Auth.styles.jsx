@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Colors from "../../helpers/Colors";
+import styled from 'styled-components';
+import Colors from '../../helpers/Colors';
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -62,4 +62,30 @@ export const Header = styled.div`
   flex-direction: column;
   gap: 10px;
   align-items: center;
+`;
+
+export const GoogleButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  color: #8091a7;
+  border: 2px solid #8091a7;
+  font-size: 1em;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
+`;
+
+export const GoogleImg = styled.img`
+  width: 25px;
+  height: 25px;
 `;

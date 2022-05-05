@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Colors from "../../helpers/Colors";
+import styled from 'styled-components';
+import Colors from '../../helpers/Colors';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -20,7 +20,8 @@ export const Container = styled.div`
   align-items: center;
   gap: 50px;
   @media (max-width: 720px) {
-    flex-direction: column;
+    gap: 10px;
+    flex-direction: column-reverse;
     justify-content: center;
     text-align: center;
   }

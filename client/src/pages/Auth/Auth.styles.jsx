@@ -89,3 +89,10 @@ export const GoogleImg = styled.img`
   width: 25px;
   height: 25px;
 `;
+
+export const ErrorMsg = styled.span`
+  font-size: 0.8em;
+  color: red;
+  margin-right: auto;
+  margin-top: -20px;
+`;

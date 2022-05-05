@@ -4,7 +4,7 @@ import { createPost, updatePost } from '../../actions/posts';
 import './Modal.css';
 import { Headline, InputField, FormWrapper, Heading, CloseModal } from './Form.styles';
 import Button from '../../components/Button/Button';
-import Input from '../Input/Input';
+import { TextInput } from '../Input/Input';
 import Modal from 'react-modal';
 import { Icon } from '../Posts/Post/Post.styles';
 
@@ -82,35 +82,35 @@ const Form = ({ currentId, setCurrentId, component }) => {
             <CloseModal onClick={closeModal} className="fa-solid fa-xmark fa-xl" />
           </Heading>
           <InputField>
-            <Input
+            <TextInput
               length={'20'}
               label={'Platform'}
               name={'platform'}
-              placeholder="Enter name of a platform (e.g. Netflix)"
+              placeholder="Platform name (e.g. Netflix)"
               type="text"
               value={postData.platform}
-              handleChange={(e) => setPostData({ ...postData, platform: e.target.value })}
+              onChange={(e) => setPostData({ ...postData, platform: e.target.value })}
             />
           </InputField>
           <InputField>
-            <Input
+            <TextInput
               length={'30'}
               label={'Username'}
               name={'username'}
-              placeholder="Enter username/e-mail used during registration"
+              placeholder="Username/e-mail"
               type="text"
               value={postData.username}
-              handleChange={(e) => setPostData({ ...postData, username: e.target.value })}
+              onChange={(e) => setPostData({ ...postData, username: e.target.value })}
             />
           </InputField>
           <InputField>
-            <Input
-              type={'password'}
+            <TextInput
+              type="password"
               label={'Password'}
               name={'password'}
               placeholder="Password goes here"
               value={postData.password}
-              handleChange={(e) => setPostData({ ...postData, password: e.target.value })}
+              onChange={(e) => setPostData({ ...postData, password: e.target.value })}
             />
           </InputField>
           <Button content={currentId ? 'Edit item' : 'Add item'} />

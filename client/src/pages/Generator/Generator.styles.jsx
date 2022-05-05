@@ -4,7 +4,7 @@ import Colors from '../../helpers/Colors';
 export const Wrapper = styled.div`
   max-width: 1000px;
   width: 100%;
-  border-radius: 15px;
+  border-radius: 10px;
   border: 1px solid #dadce0;
   background-color: rgb(255, 255, 255);
   display: flex;
@@ -36,7 +36,7 @@ export const PasswordContainer = styled.div`
   height: fit-content;
   color: #0c77b1;
   background-color: ${Colors.primary};
-  border-radius: 15px;
+  border-radius: 10px;
   border: 1px solid #dadce0;
 `;
 

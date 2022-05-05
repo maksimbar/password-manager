@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Input from '../../components/Input/Input';
+import { TextInput, PasswordInput } from '../../components/Input/Input';
+import { useForm, FormProvider } from 'react-hook-form';
+import { validationSchema } from '../../helpers/ValidationSchemas';
 import {
   Wrapper,
   Form,
@@ -11,7 +13,8 @@ import {
   ContainerFooter,
   Activator,
   GoogleButton,
-  GoogleImg
+  GoogleImg,
+  ErrorMsg
 } from './Auth.styles';
 import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
@@ -26,16 +29,6 @@ const Auth = () => {
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (isSignup) {
-      dispatch(signup(formData, navigate));
-    } else {
-      dispatch(signin(formData, navigate));
-    }
-  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -61,55 +54,74 @@ const Auth = () => {
     console.log('Google Sign In was unsuccessful. Try Again Later');
   };
 
+  const validationOpt = validationSchema(isSignup);
+
+  const methods = useForm(validationOpt);
+
+  const { errors } = methods.formState;
+
+  function onFormSubmit() {
+    if (isSignup) {
+      dispatch(signup(formData, navigate));
+    } else {
+      dispatch(signin(formData, navigate));
+    }
+  }
+
   return (
     <Wrapper>
-      <Form onSubmit={handleSubmit}>
-        <Header>
-          <Heading>{isSignup ? 'Create your account' : 'Sign in into your account'}</Heading>
-          <SubHeading>Get your password secured with us</SubHeading>
-        </Header>
-        <Input
-          handleChange={handleChange}
-          type={'email'}
-          label={'Email Address'}
-          name={'email'}
-          placeholder="Please enter your Email address"
-        />
-        <Input
-          handleChange={handleChange}
-          type={'password'}
-          label={'Master Password'}
-          placeholder="Please enter the master password"
-          name={'password'}
-        />
-        {isSignup ? (
-          <Input
-            handleChange={handleChange}
-            type={'password'}
-            label={'Re-type Master Password'}
-            placeholder="Please re-type the master password"
-            name={'confirmPassword'}
+      <FormProvider {...methods}>
+        <Form onSubmit={methods.handleSubmit(onFormSubmit)}>
+          <Header>
+            <Heading>{isSignup ? 'Create your account' : 'Sign in into your account'}</Heading>
+            <SubHeading>Get your password secured with us</SubHeading>
+          </Header>
+          <TextInput
+            onChange={handleChange}
+            type="email"
+            label={'Email Address'}
+            name={'email'}
+            placeholder="Please enter your Email address"
           />
-        ) : null}
-        <ContainerFooter>
-          <GoogleLogin
-            render={(renderProps) => (
-              <GoogleButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                <GoogleImg src={googleLogo} /> Continue with Google
-              </GoogleButton>
-            )}
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-            onSuccess={googleSuccess}
-            onFailure={googleFailure}
-            cookiePolicy="single_host_origin"
+          <PasswordInput
+            onChange={handleChange}
+            label={'Master Password'}
+            placeholder="Please enter the master password"
+            name={'password'}
           />
-          <Button content={isSignup ? 'Create Account' : 'Sign In'} size={'100%'} />
-          <Span onClick={switchMode}>
-            {isSignup ? `Already have an account?` : "Don't have an account?"}
-            <Activator>{isSignup ? 'Sign In' : 'Sign Up'}</Activator>
-          </Span>
-        </ContainerFooter>
-      </Form>
+          <ErrorMsg className="invalid-feedback">{errors.password?.message}</ErrorMsg>
+          {isSignup ? (
+            <>
+              <PasswordInput
+                onChange={handleChange}
+                label={'Re-type Master Password'}
+                placeholder="Please re-type the master password"
+                name={'confirmPassword'}
+              />
+              <ErrorMsg className="invalid-feedback">{errors.confirmPassword?.message}</ErrorMsg>
+            </>
+          ) : null}
+          <ErrorMsg className="invalid-feedback">{errors.passwordConfirm?.message}</ErrorMsg>
+          <ContainerFooter>
+            <GoogleLogin
+              render={(renderProps) => (
+                <GoogleButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                  <GoogleImg src={googleLogo} /> Continue with Google
+                </GoogleButton>
+              )}
+              clientId={'672712059522-dbsu3ks41npu2sn696eeeil895jckdh4.apps.googleusercontent.com'}
+              onSuccess={googleSuccess}
+              onFailure={googleFailure}
+              cookiePolicy="single_host_origin"
+            />
+            <Button content={isSignup ? 'Create Account' : 'Sign In'} size={'100%'} />
+            <Span onClick={switchMode}>
+              {isSignup ? `Already have an account?` : "Don't have an account?"}
+              <Activator>{isSignup ? 'Sign In' : 'Sign Up'}</Activator>
+            </Span>
+          </ContainerFooter>
+        </Form>
+      </FormProvider>
     </Wrapper>
   );
 };

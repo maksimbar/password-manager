@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const postSchema = mongoose.Schema({
-    url: String,
+    platform: String,
     username: String,
     password: String,
     creator: String,

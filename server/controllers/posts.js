@@ -3,8 +3,9 @@ import PostMessage from '../models/postMessage.js'
 
 
 export const getPosts = async (req, res) => { 
+
     try {
-        const postMessages = await PostMessage.find();
+        const postMessages = await PostMessage.find({ creator: req.userId });
                 
         res.status(200).json(postMessages);
     } catch (error) {
@@ -41,11 +42,11 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
     const { id } = req.params;
-    const {creator, url, username, password } = req.body;
+    const {creator, platform, username, password } = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updatedPost = {creator, url, username, password, _id: id };
+    const updatedPost = {creator, platform, username, password, _id: id };
 
     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
 

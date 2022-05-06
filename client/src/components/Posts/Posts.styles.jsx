@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
@@ -30,10 +30,11 @@ export const PasswordContainer = styled.div`
   }
 `;
 
-export const Banner = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5em;
+export const LoaderContainer = styled.div`
+  /* background-color: red; */
+  max-width: 1000px;
+  width: 100%;
+  height: fit-content;
 `;
+
+export const Message = styled.h3``;

@@ -10,10 +10,10 @@ import {
 import { useDispatch } from 'react-redux';
 import { deletePost } from '../../../actions/posts';
 import Form from '../../Form/Form';
-import copyToClipboard from '../../../helpers/CopyToClipboard';
-
+import { copyToClipboard, deleteCredentials } from '../../../helpers/Toasts';
 const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
+
   return (
     <>
       <PasswordContainer>
@@ -25,7 +25,7 @@ const Post = ({ post, setCurrentId }) => {
           <Form setCurrentId={setCurrentId} component={'edit'} currentId={post._id} />
           <Icon onClick={() => copyToClipboard(post.password)} className="fa-solid fa-copy fa-xl" />
           <Icon
-            onClick={() => dispatch(deletePost(post._id))}
+            onClick={() => deleteCredentials(post.platform, dispatch(deletePost(post._id)))}
             className="fa-solid fa-eraser fa-xl"
           />
         </IconContainer>
@@ -33,5 +33,4 @@ const Post = ({ post, setCurrentId }) => {
     </>
   );
 };
-
 export default Post;

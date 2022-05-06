@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://password-manager-vault.herokuapp.com/' });
-
+const API = axios.create({ baseURL: process.env.REACT_APP_SERVER_ACCESS });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {

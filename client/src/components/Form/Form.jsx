@@ -26,11 +26,9 @@ const Form = ({ currentId, setCurrentId, component }) => {
     username: '',
     password: ''
   });
-
   const post = useSelector((state) =>
-    currentId ? state.posts.find((message) => message._id === currentId) : null
+    currentId ? state.posts.posts.find((message) => message._id === currentId) : null
   );
-
   const dispatch = useDispatch();
   useEffect(() => {
     if (post) setPostData(post);
@@ -105,7 +103,6 @@ const Form = ({ currentId, setCurrentId, component }) => {
           </InputField>
           <InputField>
             <TextInput
-              type="password"
               label={'Password'}
               name={'password'}
               placeholder="Password goes here"

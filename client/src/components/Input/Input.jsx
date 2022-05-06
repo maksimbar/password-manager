@@ -3,6 +3,8 @@ import { InputWrapper, InputContainer, Label, StyledInput, IconButton } from './
 import { useFormContext } from 'react-hook-form';
 
 export const TextInput = ({ name, label, length, value, ...children }) => {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => setPasswordShown(!passwordShown);
   return (
     <InputWrapper>
       <Label htmlFor={name}>{label}</Label>
@@ -11,10 +13,16 @@ export const TextInput = ({ name, label, length, value, ...children }) => {
         maxLength={length}
         id={name}
         name={name}
-        type="text"
+        type={passwordShown ? 'text' : 'password'}
         {...children}
         required
       />
+      {name === 'password' && (
+        <IconButton
+          className={passwordShown ? 'fa-solid fa-eye fa-xl' : 'fa-solid fa-eye-slash fa-xl'}
+          onClick={togglePassword}
+        />
+      )}
     </InputWrapper>
   );
 };

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getPosts } from "../actions/posts";
-import Posts from "../components/Posts/Posts";
-import Header from "../components/Header/Header";
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getPosts } from '../actions/posts';
+import Posts from '../components/Posts/Posts';
+import Header from '../components/Header/Header';
 
 const Vault = () => {
   const [currentId, setCurrentId] = useState(null);

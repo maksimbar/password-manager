@@ -1,12 +1,21 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE } from "../constants/actionTypes";
+import {
+  FETCH_ALL,
+  CREATE,
+  START_LOADING,
+  END_LOADING,
+  UPDATE,
+  DELETE
+} from '../constants/actionTypes';
 
-import * as api from "../api/index.js";
+import * as api from '../api/index.js';
 
 export const getPosts = () => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
     const { data } = await api.fetchPosts();
 
     dispatch({ type: FETCH_ALL, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.message);
   }

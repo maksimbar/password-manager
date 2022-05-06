@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import generatePassword from "../../helpers/PasswordGenerator";
-import copyToClipboard from "../../helpers/CopyToClipboard";
+import React, { useState, useEffect } from 'react';
+import generatePassword from '../../helpers/PasswordGenerator';
+import { copyToClipboard } from '../../helpers/Toasts';
 import {
   Wrapper,
   Container,
@@ -13,19 +13,19 @@ import {
   Label,
   Checkbox,
   EntropyContainer,
-  SliderContainer,
-} from "./Generator.styles";
-import "antd/dist/antd.min.css";
-import { Slider, InputNumber } from "antd";
-import calculateEntropy from "../../helpers/Entropy";
+  SliderContainer
+} from './Generator.styles';
+import 'antd/dist/antd.min.css';
+import { Slider, InputNumber } from 'antd';
+import calculateEntropy from '../../helpers/Entropy';
 
 const Generator = () => {
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const [input, setInput] = useState({
     length: 128,
     uppercase: true,
     numbers: true,
-    symbols: true,
+    symbols: true
   });
 
   useEffect(() => {
@@ -33,14 +33,11 @@ const Generator = () => {
   }, [input]);
 
   const handleChange = (event) => {
-    const value =
-      event.target.type === "number"
-        ? event.target.value
-        : event.target.checked;
+    const value = event.target.type === 'number' ? event.target.value : event.target.checked;
 
     setInput((prev) => ({
       ...prev,
-      [event.target.name]: value,
+      [event.target.name]: value
     }));
   };
 
@@ -66,25 +63,25 @@ const Generator = () => {
             onChange={(value) => {
               setInput((prev) => ({
                 ...prev,
-                length: value,
+                length: value
               }));
             }}
             value={input.length}
             min={8}
             max={128}
-            style={{ maxWidth: "600px", width: "95%" }}
+            style={{ maxWidth: '600px', width: '95%' }}
           />
           <InputNumber
             value={input.length}
             onChange={(value) => {
               setInput((prev) => ({
                 ...prev,
-                length: value,
+                length: value
               }));
             }}
             min={8}
             max={128}
-            style={{ margin: "0 16px" }}
+            style={{ margin: '0 16px' }}
           />
         </SliderContainer>
         <Settings>

@@ -1,14 +1,7 @@
-import React from "react";
-import {
-  Container,
-  Desclaimer,
-  Span,
-  TextContainer,
-  Img,
-  Wrapper,
-} from "./Header.styles";
-import Form from "../Form/Form";
-import securityGoogleImg from "../../assets/img/security.svg";
+import React from 'react';
+import { Container, Desclaimer, Span, TextContainer, Img, Wrapper } from './Header.styles';
+import Form from '../Form/Form';
+import securityGoogleImg from '../../assets/img/security.svg';
 const Header = ({ currentId, setCurrentId }) => {
   return (
     <Wrapper>
@@ -17,7 +10,7 @@ const Header = ({ currentId, setCurrentId }) => {
         <TextContainer>
           <Span>A friendly reminder</Span>
           <Desclaimer>
-            Get a strong password using our integrated password generator
+            You can get a strong password using our integrated password generator
           </Desclaimer>
         </TextContainer>
         <Img src={securityGoogleImg} alt="image of a lock picker" />

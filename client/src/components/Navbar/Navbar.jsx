@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Nav, Li, Ul, StyledLink, UserDetails, Span, Icon } from './Navbar.styles';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import * as actionType from '../../constants/actionTypes';
 import decode from 'jwt-decode';
 
 const Navbar = () => {
@@ -22,7 +23,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const logout = () => {
-    dispatch({ type: 'LOGOUT' });
+    dispatch({ type: actionType.LOGOUT });
+    dispatch({ type: actionType.CLEAR_DATA });
     navigate('/auth');
     setUser(null);
   };

@@ -4,7 +4,8 @@ import {
   START_LOADING,
   END_LOADING,
   UPDATE,
-  DELETE
+  DELETE,
+  CLEAR_DATA
 } from '../constants/actionTypes';
 
 export default (state = { isLoading: true, posts: [] }, action) => {
@@ -27,6 +28,9 @@ export default (state = { isLoading: true, posts: [] }, action) => {
       };
     case DELETE:
       return { ...state, posts: state.posts.filter((post) => post._id !== action.payload) };
+    case CLEAR_DATA:
+      localStorage.clear();
+      return { ...state, isLoading: true, posts: [] };
     default:
       return state;
   }

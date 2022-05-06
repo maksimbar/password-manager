@@ -12,11 +12,9 @@ import * as api from '../api/index.js';
 export const getPosts = () => async (dispatch) => {
   try {
     const { data } = await api.fetchPosts();
-    setTimeout(() => {
-      dispatch({ type: START_LOADING });
-      dispatch({ type: FETCH_ALL, payload: data });
-      dispatch({ type: END_LOADING });
-    }, 1000);
+    dispatch({ type: START_LOADING });
+    dispatch({ type: FETCH_ALL, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.message);
   }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import { getPosts } from '../../actions/posts';
 import Post from './Post/Post';
 import { PasswordContainer, Container, LoaderContainer, Message } from './Posts.styles';
 import ContentLoader from 'react-content-loader';
@@ -20,7 +19,6 @@ const MyLoader = (props) => (
 
 const Posts = ({ setCurrentId }) => {
   const { posts, isLoading } = useSelector((state) => state.posts);
-
   return isLoading ? (
     <LoaderContainer>
       <MyLoader />

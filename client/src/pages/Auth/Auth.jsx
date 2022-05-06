@@ -109,7 +109,7 @@ const Auth = () => {
                   <GoogleImg src={googleLogo} /> Continue with Google
                 </GoogleButton>
               )}
-              clientId={'672712059522-dbsu3ks41npu2sn696eeeil895jckdh4.apps.googleusercontent.com'}
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               onSuccess={googleSuccess}
               onFailure={googleFailure}
               cookiePolicy="single_host_origin"

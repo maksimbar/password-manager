@@ -31,7 +31,6 @@ export const PasswordContainer = styled.div`
 `;
 
 export const LoaderContainer = styled.div`
-  /* background-color: red; */
   max-width: 1000px;
   width: 100%;
   height: fit-content;

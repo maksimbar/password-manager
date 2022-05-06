@@ -1,19 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+// import { getPosts } from '../../actions/posts';
 import Post from './Post/Post';
 import { PasswordContainer, Container, LoaderContainer, Message } from './Posts.styles';
 import ContentLoader from 'react-content-loader';
 
 const MyLoader = (props) => (
   <ContentLoader
-    viewBox="0 0 400 160"
-    height={160}
-    width={200}
-    backgroundColor="transparent"
+    speed={2}
+    viewBox="0 0 1200 300"
+    backgroundColor="#f5f5f5"
+    foregroundColor="#ecebeb"
     {...props}>
-    <circle cx="10" cy="86" r="8" />
-    <circle cx="54" cy="86" r="8" />
-    <circle cx="98" cy="86" r="8" />
+    <rect x="0" y="0" rx="5" ry="5" width="100%" height="80" />
+    <rect x="0" y="100" rx="5" ry="5" width="100%" height="80" />
+    <rect x="0" y="200" rx="5" ry="5" width="100%" height="80" />
   </ContentLoader>
 );
 

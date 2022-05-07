@@ -8,21 +8,23 @@ export const TextInput = ({ name, label, length, value, ...children }) => {
   return (
     <InputWrapper>
       <Label htmlFor={name}>{label}</Label>
-      <StyledInput
-        value={value}
-        maxLength={length}
-        id={name}
-        name={name}
-        type={passwordShown ? 'text' : 'password'}
-        {...children}
-        required
-      />
-      {name === 'password' && (
-        <IconButton
-          className={passwordShown ? 'fa-solid fa-eye fa-xl' : 'fa-solid fa-eye-slash fa-xl'}
-          onClick={togglePassword}
+      <InputContainer>
+        <StyledInput
+          value={value}
+          maxLength={length}
+          id={name}
+          name={name}
+          type={passwordShown ? 'text' : 'password'}
+          {...children}
+          required
         />
-      )}
+        {name === 'password' && (
+          <IconButton
+            className={passwordShown ? 'fa-solid fa-eye fa-xl' : 'fa-solid fa-eye-slash fa-xl'}
+            onClick={togglePassword}
+          />
+        )}
+      </InputContainer>
     </InputWrapper>
   );
 };

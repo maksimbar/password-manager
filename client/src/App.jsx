@@ -6,7 +6,7 @@ import Generator from './pages/Generator/Generator';
 import Auth from './pages/Auth/Auth';
 import { Backdrop } from './App.styles';
 import { ToastContainer } from 'react-toastify';
-import { PrivateRoute } from './PrivateRoute';
+import { ProtectedRoute } from './ProtectedRoute';
 
 const App = () => {
   return (
@@ -15,25 +15,20 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          <Route element={<ProtectedRoute user={false} />}>
+            <Route path="/vault" element={<Vault />} />
+            <Route path="/generator" element={<Generator />} />
+            <Route path="/" element={<Navigate replace to="/vault" />} />
+            <Route path="*" element={<Navigate replace to="/vault" />} />
+          </Route>
           <Route
-            path="/vault"
+            path="/auth"
             element={
-              <PrivateRoute>
-                <Vault />
-              </PrivateRoute>
+              <ProtectedRoute user={true}>
+                <Auth />
+              </ProtectedRoute>
             }
           />
-          <Route
-            path="/generator"
-            element={
-              <PrivateRoute>
-                <Generator />
-              </PrivateRoute>
-            }
-          />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/" element={<Navigate replace to="/vault" />} />
-          <Route path="*" element={<Vault to="/vault" replace />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />

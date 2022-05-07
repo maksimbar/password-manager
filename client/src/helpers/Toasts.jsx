@@ -7,5 +7,5 @@ export const copyToClipboard = (content) => {
 
 export const deleteCredentials = (platform, func) => {
   notify(`Credentials for ${platform} removed successfully`);
-  func()
+  func();
 };

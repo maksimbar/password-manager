@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Colors from "../../../helpers/Colors";
+import styled from 'styled-components';
+import Colors from '../../../helpers/Colors';
 
 export const PasswordContainer = styled.div`
   display: flex;

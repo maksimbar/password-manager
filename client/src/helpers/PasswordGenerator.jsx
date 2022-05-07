@@ -15,12 +15,7 @@ const getSymbol = () =>
     .concat(generateArray(91, 96))
     .concat(generateArray(123, 126));
 
-const generatePassword = (
-  charlength,
-  includeNumbers,
-  includeSymbols,
-  includeUppercase
-) => {
+const generatePassword = (charlength, includeNumbers, includeSymbols, includeUppercase) => {
   let charCodes = getLowerCase();
   if (includeUppercase) charCodes = charCodes.concat(getUpperCase());
   if (includeNumbers) charCodes = charCodes.concat(getNumbers());
@@ -28,12 +23,11 @@ const generatePassword = (
 
   const passwordCharacters = [];
   for (let i = 0; i < charlength; i++) {
-    const characterCode =
-      charCodes[Math.floor(Math.random() * charCodes.length)];
+    const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)];
     passwordCharacters.push(String.fromCharCode(characterCode));
   }
 
-  return passwordCharacters.join("");
+  return passwordCharacters.join('');
 };
 
 export default generatePassword;

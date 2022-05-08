@@ -21,7 +21,7 @@ A Password Manager project created using MERN stack
 
 - [Node.js](https://nodejs.org/en/) - Runtime environment for JS
 - [Express.js](https://expressjs.com/) - Node.js framework, makes process of building APIs easier & faster
-- [MongoDB](https://www.mongodb.com/) - Open source NoSQL database management progra
+- [MongoDB](https://www.mongodb.com/) - Open source NoSQL database management program
 - [JSON Web Token](https://jwt.io/) - A standard to secure/authenticate HTTP requests
 - [Bcrypt.js](https://www.npmjs.com/package/bcryptjs) - For hashing passwords
 - [Dotenv](https://www.npmjs.com/package/dotenv) - To load environment variables from a .env file
@@ -41,7 +41,6 @@ A Password Manager project created using MERN stack
 ![_vault](client/public/assets/_vault.png)
 ![_generator](client/public/assets/_generator.png)
 
-
 ## Project Setup
 
 Navigate to the directory of choice and clone the project
@@ -52,7 +51,7 @@ git clone https://github.com/tmneth/password-manager.git
 
 ## Setting up the server
 
-To configure server run the following command from the root directory
+To configure the server run the following command from the root directory
 
 ```console
 cd server && npm install
@@ -62,7 +61,7 @@ Create .env file and configure environmental variables as follows
 
 ```js
 CONNECTION_URI=<your MongoDB URI>
-SECRET_KEY=<your secret key for hashing password>
+SECRET_KEY=<your secret key for hashing passwords>
 ```
 
 Once all the dependencies were installed start the server
@@ -73,7 +72,7 @@ npm run start
 
 ## Setting up the client
 
-To configure client run the following command from the root directory
+To configure the client run the following command from the root directory
 
 ```console
 cd client && npm install

@@ -1,9 +1,10 @@
-import React from "react";
-import { StyledButton } from "./Button.styles";
+import React from 'react';
+import { StyledButton, LoadingSpinner } from './Button.styles';
 
-const Button = ({ content, size, ...children }) => {
+const Button = ({ loading, content, size, ...children }) => {
   return (
-    <StyledButton {...children} style={{ width: size }}>
+    <StyledButton disabled={loading} {...children} style={{ width: size }}>
+      {loading && <LoadingSpinner />}
       {content}
     </StyledButton>
   );

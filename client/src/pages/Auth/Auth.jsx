@@ -27,6 +27,7 @@ const initialState = { email: '', password: '', confirmPassword: '' };
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
   const [formData, setFormData] = useState(initialState);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -44,7 +45,7 @@ const Auth = () => {
     try {
       dispatch({ type: 'AUTH', data: { result, token } });
 
-      navigate('/');
+      navigate('/vault');
     } catch (error) {
       console.log(error);
     }
@@ -62,10 +63,11 @@ const Auth = () => {
 
   function onFormSubmit() {
     if (isSignup) {
-      dispatch(signup(formData, navigate));
+      dispatch(signup(formData, navigate, setLoading));
     } else {
-      dispatch(signin(formData, navigate));
+      dispatch(signin(formData, navigate, setLoading));
     }
+    setLoading(true);
   }
 
   return (
@@ -114,7 +116,12 @@ const Auth = () => {
               onFailure={googleFailure}
               cookiePolicy="single_host_origin"
             />
-            <Button content={isSignup ? 'Create Account' : 'Sign In'} size={'100%'} />
+            <Button
+              loading={loading}
+              content={isSignup ? 'Create Account' : 'Sign In'}
+              size={'100%'}
+            />
+
             <Span onClick={switchMode}>
               {isSignup ? `Already have an account?` : "Don't have an account?"}
               <Activator>{isSignup ? 'Sign In' : 'Sign Up'}</Activator>

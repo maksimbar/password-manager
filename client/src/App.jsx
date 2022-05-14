@@ -15,20 +15,13 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route element={<ProtectedRoute user={false} />}>
+          <Route element={<ProtectedRoute />}>
             <Route path="/vault" element={<Vault />} />
             <Route path="/generator" element={<Generator />} />
-            <Route path="/" element={<Navigate replace to="/vault" />} />
-            <Route path="*" element={<Navigate replace to="/vault" />} />
           </Route>
-          <Route
-            path="/auth"
-            element={
-              <ProtectedRoute user={true}>
-                <Auth />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/" element={<Navigate replace to="/vault" />} />
+          <Route path="*" element={<Vault to="/vault" replace />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />

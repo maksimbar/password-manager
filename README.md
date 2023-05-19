@@ -2,8 +2,6 @@
 
 A Password Manager project created using MERN stack
 
-[Deployed on Netlify (front-end) & Heroku (back-end)](https://keyattic.com)
-
 ## Built using
 
 #### Front-end
